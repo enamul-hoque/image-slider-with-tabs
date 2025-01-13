@@ -1,0 +1,48 @@
+/* Tab Styles */
+.iswt_filters {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 20px;
+    list-style: none;
+    padding: 0 0 40px;
+    margin: 0;
+}
+
+.iswt_filters > li {
+    padding: 10px 15px;
+    border: 1px solid;
+    -webkit-transition: color .25s, border-color .25s, background-color .25s ease-in-out;
+    transition: color .25s, border-color .25s, background-color .25s ease-in-out;
+    cursor: pointer;
+}
+
+.iswt_tab:not(.active) {
+    display: none;
+}
+
+/* Slider Styles */
+.iswt_tab {
+    position: relative;
+}
+.iswt_tab .swiper-button-disabled {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
+
+.iswt_tab a {
+    display: block;
+}
+
+.iswt_tab img {
+    display: block;
+    width: 100%;
+    height: auto;
+    -o-object-fit: cover;
+       object-fit: cover;
+}
