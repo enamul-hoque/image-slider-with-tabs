@@ -234,18 +234,36 @@ class ISWT_Widget extends Widget_Base {
 		$this->end_controls_section();
 		// Section: Content End.
 
-		// Section: Image Style Start.
+		// Section: Slider Style Start.
 		$this->start_controls_section(
-			'section_image_style',
+			'section_slider_style',
 			[
-				'label' => __( 'Image', 'image-slider-with-tabs' ),
+				'label' => __( 'Slider', 'image-slider-with-tabs' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
 			$this->add_responsive_control(
+				'slider_count',
+				[
+					'label'      => __( 'Slides Per View', 'image-slider-with-tabs' ),
+					'type'       => Controls_Manager::SLIDER,
+					'range'      => [
+						'px' => [
+							'min'  => 0,
+							'max'  => 10,
+							'step' => 1,
+						],
+					],
+					'default'    => [
+						'size' => 3,
+					],
+				]
+			);
+
+			$this->add_responsive_control(
 				'image_height',
 				[
-					'label'      => __( 'Height', 'image-slider-with-tabs' ),
+					'label'      => __( 'Image Height', 'image-slider-with-tabs' ),
 					'type'       => Controls_Manager::SLIDER,
 					'size_units' => [ 'px', 'em', 'rem', '%' ],
 					'range'      => [
@@ -266,7 +284,7 @@ class ISWT_Widget extends Widget_Base {
 				]
 			);
 		$this->end_controls_section();
-		// Section: Image Style End.
+		// Section: Slider Style End.
 
 		// Section: Pagitaion Styles.
 		$this->start_controls_section(
@@ -361,7 +379,7 @@ class ISWT_Widget extends Widget_Base {
 			<div class="iswt_tabs">
 				<?php foreach ($settings['iswt_tabs'] as $index => $tab) { ?>
 					<div class="iswt_tab iswt-tab-<?php echo esc_attr($index . ($index === 0 ? ' active' : '')); ?>">
-						<div class="swiper" data-slidesperview="3">
+						<div class="swiper" data-slidesperview="<?php echo esc_attr($settings['slider_count']['size']); ?>">
 							<div class="swiper-wrapper">
 								<?php
 									$tab['tab_links'] = explode( PHP_EOL, $tab['tab_links'] );
